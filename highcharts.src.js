@@ -14310,7 +14310,7 @@ Series.prototype = {
 		if (zones.length && (graph || area)) {
 			// The use of the Color Threshold assumes there are no gaps
 			// so it is safe to hide the original graph and area
-			graph.hide();
+			if (graph) { graph.hide(); }
 			if (area) { area.hide(); }
 
 			// Create the clips
