@@ -14312,6 +14312,11 @@ Series.prototype = {
 			// so it is safe to hide the original graph and area
 			if (graph) { graph.hide(); }
 			if (area) { area.hide(); }
+			
+			if (series.data && series.data.length == 0){
+				// Early exit because we don't have any data.
+				return;
+			}
 
 			// Create the clips
 			each(zones, function (threshold, i) {
