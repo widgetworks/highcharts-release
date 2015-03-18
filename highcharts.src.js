@@ -14312,11 +14312,6 @@ Series.prototype = {
 			// so it is safe to hide the original graph and area
 			if (graph) { graph.hide(); }
 			if (area) { area.hide(); }
-			
-			if (series.data && series.data.length == 0){
-				// Early exit because we don't have any data.
-				return;
-			}
 
 			// Create the clips
 			each(zones, function (threshold, i) {
@@ -14373,8 +14368,11 @@ Series.prototype = {
 					clips[i].animate(clipAttr);
 				} else {
 					clips[i] = renderer.clipRect(clipAttr);
-
-					series['colorGraph' + i].clip(clips[i]);
+					
+					if (graph){
+						series['colorGraph' + i].clip(clips[i]);
+					}
+						
 
 					if (area) {
 						series['colorArea' + i].clip(clips[i]);
